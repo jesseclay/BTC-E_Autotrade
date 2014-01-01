@@ -9,6 +9,7 @@ This script assumes that the market will always rise. It functions by:
 2. Immediately creating a sell order at the current bid price + the profit margin you'd like to make
 
 
+A lot of the code will probably make more sense after learning up on the btce gem: https://github.com/cgore/ruby-btce.
 Getting Started
 ---------------
 1. Clone the repo to your hard drive.
