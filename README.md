@@ -1,4 +1,4 @@
-BTC-E Daytrade
+BTC-E Autotrade
 ==============
 
 This is a simple ruby script for automated trading on btc-e.com using the btce gem. Currently configured to run locally.
