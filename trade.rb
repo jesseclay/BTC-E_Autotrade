@@ -3,7 +3,7 @@ require 'btce'
 PROFIT_MARGIN = 0.006 # btc-e charges .02% to buy and .02% to sell, so we'll make .02% in profit
 PAIR = "ltc_btc"
 AMOUNT = "0.998"
-SLEEP_DURATION = 1
+SLEEP_DURATION = 1 # Amount of time to wait before pinging server again
 ORDER_PLACED = false
 
 while true do # ping btce forever
