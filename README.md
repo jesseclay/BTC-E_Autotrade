@@ -3,6 +3,12 @@ BTC-E_Daytrade
 
 This is a simple ruby script for automated trading on btc-e.com using the btce gem. Currently configured to run locally.
 
+This script assumes that the market will always rise. It functions by:
+
+1. Placing a buy order at the current bid (buy) price
+2. Immediately creating a sell order at the current bid price + the profit margin you'd like to make
+
+
 Getting Started
 ---------------
 1. Clone the repo to your hard drive.
