@@ -21,7 +21,7 @@ while true do # ping btce forever
     end
   end
 
-  if ! ORDER_PLACED
+  if ! ORDER_PLACED #if there is no existing sell order
     ticker = Btce::Ticker.new pair
     # buy currency @ buy price
     rate = ticker.buy.to_s
@@ -29,7 +29,7 @@ while true do # ping btce forever
     p Btce::TradeAPI.new_from_keyfile.trade buy_json
 
     # place sell order for PROFIT_MARGIN percentage above buy price
-    rate = ((ticker.buy * PROFIT_MARGIN) + ticker.buy).round(5).to_s #rounded for btc accuracy
+    rate = ((ticker.buy * PROFIT_MARGIN) + ticker.buy).round(5).to_s #rounded for btce accuracy
     sell_json = {"pair" => PAIR, "type" => "sell", "rate" => rate, "amount" => AMOUNT}
     p Btce::TradeAPI.new_from_keyfile.trade sell_json
   end
