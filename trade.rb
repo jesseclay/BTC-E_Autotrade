@@ -4,10 +4,9 @@ PROFIT_MARGIN = 0.006 # btc-e charges .02% to buy and .02% to sell, so we'll mak
 PAIR = "ltc_btc"
 AMOUNT = "0.998"
 SLEEP_DURATION = 1 # Amount of time to wait before pinging server again
-ORDER_PLACED = false
 
 while true do # ping btce forever
-
+  order_placed = false
   sleep SLEEP_DURATION # added this to prevent nonce increment errors (pinging server too fast)
 
   order_list = Btce::TradeAPI.new_from_keyfile.order_list
@@ -15,14 +14,14 @@ while true do # ping btce forever
   # go through all current orders and see if this pair has a trade placed yet
   if order_list["success"] == 1
     for id in order_list["return"]
-      if id[1]["pair"] == pair
-        ORDER_PLACED = true
+      if id[1]["pair"] == PAIR
+        order_placed = true
       end
     end
   end
 
-  if ! ORDER_PLACED # if there is no existing sell order
-    ticker = Btce::Ticker.new pair
+  if ! order_placed # if there is no existing sell order
+    ticker = Btce::Ticker.new PAIR
     # buy currency @ buy price
     rate = ticker.buy.to_s
     buy_json = {"pair" => PAIR, "type" => "buy", "rate" => rate, "amount" => AMOUNT}
