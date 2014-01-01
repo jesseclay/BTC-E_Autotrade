@@ -21,7 +21,7 @@ while true do # ping btce forever
     end
   end
 
-  if ! ORDER_PLACED #if there is no existing sell order
+  if ! ORDER_PLACED # if there is no existing sell order
     ticker = Btce::Ticker.new pair
     # buy currency @ buy price
     rate = ticker.buy.to_s
